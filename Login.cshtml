@@ -1,0 +1,135 @@
+﻿@using MVCEmail.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
+    <title>Login Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="~/Login/Login_v15/images/icons/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="~/Login/Login_v15/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Login/Login_v15/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Login/Login_v15/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Login/Login_v15/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/Login/Login_v15/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Login/Login_v15/vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Login/Login_v15/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Login/Login_v15/vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="~/Login/Login_v15/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Login/Login_v15/css/main.css">
+
+</head>
+<body>
+    @*<header>
+            <h1>Login Form</h1>
+        </header>*@
+    <div class="limiter">
+        <div class="container-login100">
+            @*<a class="hiddenanchor" id="toregister"></a>
+                <a class="hiddenanchor" id="tologin"></a>*@
+            <div class="wrap-login100">
+               
+                    <div class="login100-form-title" style="background-image:url(~/Login/Login_v15/images/bg-01.jpg);" >
+                        @*<input type="image" class="input100" resource=" url(~/images/bg-01.jpg)" />*@
+                        <img src="~/login/login_v15/images/bg-01.jpg"  />
+                        <span class="login100-form-title-1">
+                            Sign In
+                        </span>
+                    </div>
+
+                    @*<form class="login100-form validate-form">*@
+
+                    @using (Html.BeginForm("login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login100-form validate-form", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="wrap-input100 validate-input m-b-26">
+                            @Html.LabelFor(m => m.Email, new { @class = "label-input100" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "input100" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "wrap-input100 validate-input m-b-26" })
+                            </div>
+                        </div>
+                        <div class="wrap-input100 validate-input m-b-18">
+                            @Html.LabelFor(m => m.Password, new { @class = "label-input100" })
+                            <div class="col-md-10">
+                                @Html.PasswordFor(m => m.Password, new { @class = "input100" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="flex-sb-m w-full p-b-30">
+                            <div class="contact100-form-checkbox">
+                                @Html.CheckBoxFor(m => m.RememberMe,new {@class = "input-checkbox100" })
+                                @Html.LabelFor(m => m.RememberMe, new { @class = "label-checkbox100" })
+                            </div>
+                        </div>
+                        <div class="container-login100-form-btn">
+                            <input type="submit" value="Log in" class="login100-form-btn" />
+
+                        </div>
+                        <p class="change_link">
+                            Not a member yet ?
+                            @*<a href="~/View/Account/Register.chtml" class="to_register">Join us</a>*@
+                            @Html.ActionLink("Join us", "Register")
+                        </p>
+                        @* Enable this once you have account confirmation enabled for password reset functionality
+            <p>
+                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+            </p>*@
+                    }
+                    @*</form>*@
+                </div>
+            @*<div class="col-md-4">
+                    <section id="socialLoginForm">
+                        @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                    </section>
+                </div>*@
+        </div>
+
+    </div>
+   
+
+
+    @section Scripts {
+        @Scripts.Render("~/Login/Login_v15/vendor/jquery/jquery-3.2.1.min.js")
+        @Scripts.Render("~/Login/Login_v15/vendor/animsition/js/animsition.min.js")
+        @Scripts.Render("~/Login/Login_v15/vendor/bootstrap/js/popper.js")
+        @Scripts.Render("~/Login/Login_v15/vendor/bootstrap/js/bootstrap.min.js")
+        @Scripts.Render("~/Login/Login_v15/vendor/select2/select2.min.js")
+        @Scripts.Render("~/Login/Login_v15/vendor/daterangepicker/moment.min.js")
+        @Scripts.Render("~/Login/Login_v15/vendor/daterangepicker/daterangepicker.js")
+
+        @Scripts.Render("~/Login/Login_v15/vendor/countdowntime/countdowntime.js")
+        @Scripts.Render("~/Login/Login_v15/js/main.js")
+
+       @Scripts.Render("~/bundles/jqueryval")
+    }
+
+</body>
+
+</html>
+
+
+
+@*@section Scripts {
+    @Scripts.Render("~/Login/Login_v15/vendor/jquery/jquery-3.2.1.min.js")
+    @Scripts.Render("~/Login/Login_v15/vendor/animsition/js/animsition.min.js")
+    @Scripts.Render("~/Login/Login_v15/vendor/bootstrap/js/popper.js")
+    @Scripts.Render("~/Login/Login_v15/vendor/bootstrap/js/bootstrap.min.js")
+    @Scripts.Render("~/Login/Login_v15/vendor/select2/select2.min.js")
+    @Scripts.Render("~/Login/Login_v15/vendor/daterangepicker/moment.min.js")
+    @Scripts.Render("~/Login/Login_v15/vendor/daterangepicker/daterangepicker.js")
+
+    @Scripts.Render("~/Login/Login_v15/vendor/countdowntime/countdowntime.js")
+    @Scripts.Render("~/Login/Login_v15/js/main.js")
+
+    @Scripts.Render("~/bundles/jqueryval")
+}*@
