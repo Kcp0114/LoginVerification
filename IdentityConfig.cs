@@ -21,44 +21,9 @@ namespace MVCEmail
     {
         public async Task SendAsync(IdentityMessage message)
         {
-           await configSendGridasync(message);
-           // return Task.FromResult(0);
-            //ASPSMS End
-            // Plug in your email service here to send an email.
+           
         }
-        private async Task configSendGridasync(IdentityMessage message)
-        {
-
-            var mymessage = new SendGridMessage();
-            var apiKey = Environment.GetEnvironmentVariable("NAME_OF_THE_ENVIRONMENT_VARIABLE_FOR_YOUR_SENDGRID_KEY");
-            var client = new SendGridClient(apiKey);
-            var from = new EmailAddress("test@example.com", "Example User");
-            var subject = "Sending with SendGrid is Fun";
-            var to = new EmailAddress("krutipatel1181@gmail.com", "Example User");
-            var plainTextContent = "and easy to do anywhere, even with C#";
-            var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
-            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-            var response = await client.SendEmailAsync(msg);
-
-            //var credentials = new NetworkCredential(
-            //           ConfigurationManager.AppSettings["mailaccount"],
-            //           ConfigurationManager.AppSettings["mailpassword"]
-            //           );
-
-            //// create a web transport for sending email.
-            //var transportweb = new Web(credentials);
-
-            //// send the email.
-            //if (transportweb != null)
-            //{
-            //    await transportweb.deliverasync(mymessage);
-            //}
-            //else
-            //{
-            //    Trace.TraceError("failed to create web transport.");
-            //    await Task.FromResult(0);
-            //}
-        }
+       
     }
    
 
